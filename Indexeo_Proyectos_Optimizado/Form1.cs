@@ -2500,7 +2500,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
 
             else
 
-
+             
             {
                 if (ObraCivil == "" || ObraCivil == null) { ObraCivil = "0"; }
                 if (SirocEIMSS == "" || SirocEIMSS == null) { SirocEIMSS = "0"; }
