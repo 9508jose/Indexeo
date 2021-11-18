@@ -52,15 +52,15 @@ namespace Indexeo_Proyectos_Optimizado
             this.proyectos_Avance_ArchivosTableAdapter = new Indexeo_Proyectos_Optimizado.ProyectosArchivosTableAdapters.Proyectos_Avance_ArchivosTableAdapter();
             this.proyectos_Avance_INOXTableAdapter = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_INOXTableAdapters.Proyectos_Avance_INOXTableAdapter();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.proyectos_Avance_Others = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_Others();
-            this.proyectosAvanceotherBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proyectos_Avance_otherTableAdapter = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters.Proyectos_Avance_otherTableAdapter();
             this.proyectoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obracivilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siroceImssDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subcontratosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memoriasCalculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalGeneralDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proyectosAvanceotherBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectos_Avance_Others = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_Others();
+            this.proyectos_Avance_otherTableAdapter = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters.Proyectos_Avance_otherTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceINOXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_INOX)).BeginInit();
@@ -73,16 +73,17 @@ namespace Indexeo_Proyectos_Optimizado
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceArchivosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosArchivos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceotherBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(352, 53);
+            this.comboBox1.Location = new System.Drawing.Point(264, 43);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 24);
+            this.comboBox1.Size = new System.Drawing.Size(170, 21);
             this.comboBox1.TabIndex = 0;
             // 
             // dataGridView1
@@ -95,11 +96,12 @@ namespace Indexeo_Proyectos_Optimizado
             this.instalacionyPreparativosDataGridViewTextBoxColumn,
             this.totalGeneralDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.proyectosAvanceINOXBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(446, 186);
+            this.dataGridView1.Location = new System.Drawing.Point(334, 151);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(156, 110);
+            this.dataGridView1.Size = new System.Drawing.Size(117, 89);
             this.dataGridView1.TabIndex = 1;
             // 
             // proyectoDataGridViewTextBoxColumn
@@ -216,26 +218,13 @@ namespace Indexeo_Proyectos_Optimizado
             this.memoriasCalculoDataGridViewTextBoxColumn,
             this.totalGeneralDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.proyectosAvanceotherBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(259, 215);
+            this.dataGridView2.Location = new System.Drawing.Point(112, 151);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(109, 120);
+            this.dataGridView2.Size = new System.Drawing.Size(82, 98);
             this.dataGridView2.TabIndex = 2;
-            // 
-            // proyectos_Avance_Others
-            // 
-            this.proyectos_Avance_Others.DataSetName = "Proyectos_Avance_Others";
-            this.proyectos_Avance_Others.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // proyectosAvanceotherBindingSource
-            // 
-            this.proyectosAvanceotherBindingSource.DataMember = "Proyectos_Avance_other";
-            this.proyectosAvanceotherBindingSource.DataSource = this.proyectos_Avance_Others;
-            // 
-            // proyectos_Avance_otherTableAdapter
-            // 
-            this.proyectos_Avance_otherTableAdapter.ClearBeforeFill = true;
             // 
             // proyectoDataGridViewTextBoxColumn1
             // 
@@ -285,14 +274,29 @@ namespace Indexeo_Proyectos_Optimizado
             this.totalGeneralDataGridViewTextBoxColumn1.Name = "totalGeneralDataGridViewTextBoxColumn1";
             this.totalGeneralDataGridViewTextBoxColumn1.Width = 125;
             // 
+            // proyectosAvanceotherBindingSource
+            // 
+            this.proyectosAvanceotherBindingSource.DataMember = "Proyectos_Avance_other";
+            this.proyectosAvanceotherBindingSource.DataSource = this.proyectos_Avance_Others;
+            // 
+            // proyectos_Avance_Others
+            // 
+            this.proyectos_Avance_Others.DataSetName = "Proyectos_Avance_Others";
+            this.proyectos_Avance_Others.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // proyectos_Avance_otherTableAdapter
+            // 
+            this.proyectos_Avance_otherTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -308,8 +312,8 @@ namespace Indexeo_Proyectos_Optimizado
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceArchivosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosArchivos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceotherBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).EndInit();
             this.ResumeLayout(false);
 
         }

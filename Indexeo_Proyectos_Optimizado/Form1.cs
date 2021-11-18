@@ -25,8 +25,9 @@ namespace Indexeo_Proyectos_Optimizado
         String DepAtencion = "", Depproduccion = "", DepFinanzas = "", DepProyectos = "", DepEquip = "", DepVentas = "";
         decimal porcentaje2;
         String ValorLista = "0", ValorPreparativos = "0", NombreProyecto="";
+        String ObraCivil = "", SirocEIMSS = "", Subcontratos = "", ControldeObra = "", TotalComunOtro = "", Presupuesto = "";
         decimal contador1, contador2, contador3, contador4, contador5, contador6, contador7, contador8, contador9, contador10,
-           contador11, contador12, contador13, contador14, contador15, contador16, contador17, contador18, contador19, contador20, contador21, contador22, contador23, contador24,contador25,contador26,contador27;
+           contador11, contador12, contador13, contador14, contador15, contador16, contador17, contador18, contador19, contador20, contador21, contador22, contador23, contador24,contador25,contador26,contador27,contador28,contador29,contador30;
         decimal porcentaje, generalporcentaje, porcentajeinox;
         decimal valorproyecto;
         String TotalProyectos = "",Año,Tipo,Nombre,Folio,Totalrestantes,Documento,Carpeta,Departamento;
@@ -196,12 +197,17 @@ AtencionClientes
                     sda2.Fill(dt2);
                     conexion2.Dispose();
                     if (dt2.Rows.Count > 0)
-                    { ActualizaPorcentajes(); 
-                        
-                        if (Tipo =="Proyectos-Inox"&& Carpeta=="Lista de Materiales y Equipos" || Tipo == "Proyectos-Inox" && Carpeta == "Instalacion Preparativos") {  }
-                        if (Tipo == "Proyectos-Inox") { 
-                            ActualizaPorcentajesINOX(); }
+                    {
+                        ActualizaPorcentajes();
+
+                      
+                        if (Tipo == "Proyectos-Inox")
+                        {
+                            ActualizaPorcentajesINOX();
+                        }
+                        else { ActualizaPorcentajesINDPot(); }
                     }
+                   
 
                         index_carpetasTableAdapter.DeleteQuery(Path.GetFileName(files[i]));
 
@@ -285,7 +291,7 @@ AtencionClientes
                 }
                 else
                 {
-                    proyectos_Avance_otherTableAdapter.InsertQuery(Nombre, "0", "0", "0", "0", "0");
+                    proyectos_Avance_otherTableAdapter.InsertQuery(Nombre, "0", "0", "0", "0", "0","0","0");
                 }
                 conexion2.Dispose();
 
@@ -897,7 +903,17 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
 
                         Documento = "";
 
+                        //if (ObraCivil == "0" && SirocEIMSS == "0" && Subcontratos == "0" && ControldeObra == "0" && Presupuesto == "0")
+                        //{
+                        //    proyectos_Avance_otherTableAdapter.UpdateTotalComun(General, NombreProyecto);
+                        //}
+                        //else { }
 
+                        //if (ValorLista == "0" && ValorPreparativos == "0")
+                        //{
+                        //    proyectos_Avance_INOXTableAdapter.UpdateTotalComun(General, NombreProyecto);
+                        //}
+                        //else { }
                 }
             }
         }
@@ -1003,7 +1019,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
 
                 proyectos_AvanceTableAdapter.AgregaProyecto(Nombre, "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
                 proyectos_Avance_INOXTableAdapter.InsertQuery(Nombre = "0", "0", "0", "0", "0");
-                proyectos_Avance_otherTableAdapter.InsertQuery(Nombre = "0", "0", "0", "0", "0","0");
+                proyectos_Avance_otherTableAdapter.InsertQuery(Nombre = "0", "0", "0", "0", "0","0","0","0");
                 conexion2.Dispose();
             }
            
@@ -1670,7 +1686,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
             {
                 int total = 4; decimal porcentaje=0;
                 contador18 = contador18 + 1;
-                if (Tipo == "Proyecto-Inox") { porcentaje = (contador18 * 100) / 6; }
+                if (Tipo == "Proyectos-Inox") { porcentaje = (contador18 * 100) / 6; }
                 else { porcentaje = (contador18 * 100) / 3; }
 
 
@@ -2050,7 +2066,9 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                     if (ValorLista == "" || ValorLista == null) { ValorLista = "0"; }
                     if (ValorPreparativos == "" || ValorPreparativos == null) { ValorPreparativos = "0"; }
                 }
-                else { proyectos_Avance_INOXTableAdapter.InsertQuery(NombreProyecto, "0", "0", "0", "0"); }
+                else {
+                    string PorcentajeComun = porcentaje2.ToString(); 
+                    proyectos_Avance_INOXTableAdapter.InsertQuery(NombreProyecto, PorcentajeComun, "0", "0", "0"); }
                 int total = 11; decimal porcentaje, porcentaje3, porcentaje4;
                 
                 string Porcentaje2 = porcentaje2.ToString();
@@ -2202,6 +2220,312 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
 
                 proyectos_Avance_INOXTableAdapter.UpdateFabricacion(Porcentaje2, Porcentaje, PorcentajeFinal, NombreProyecto);
             }
+            else{
+                if (ValorLista == "" || ValorLista == null) { ValorLista = "0"; }
+                if (ValorPreparativos == "" || ValorPreparativos == null) { ValorPreparativos = "0"; }
+                if (ValorLista == "0" && ValorPreparativos == "0")
+                {
+                    decimal Preparativos = Convert.ToDecimal(ValorPreparativos);
+                    decimal Comun = Convert.ToDecimal(porcentaje2);
+                    decimal Lista = Convert.ToDecimal(ListaInox);
+
+                    decimal sumatotal = Lista + Preparativos + Comun;
+                    decimal totalgeneral = sumatotal * 100 / 300;
+                    string Porcentaje2 = porcentaje2.ToString();
+                    string TotalGeneral = totalgeneral.ToString();
+                    proyectos_Avance_INOXTableAdapter.UpdateTotales(Porcentaje2, TotalGeneral, NombreProyecto);
+                }
+                else { }
+              
+            }
+        }
+
+        public void ActualizaPorcentajesINDPot()
+        {
+
+            SqlConnection conexion6 = new SqlConnection(ObtenerCadena());
+            conexion6.Open();
+
+
+
+
+
+            SqlCommand cmd6 = new SqlCommand(
+                                   "select" +
+                                     "[Departamento], " +
+                                   "[Carpeta], " +
+                                   "[Documento] " +
+
+                                   "from [Ser_Documentos_IND-POT] where Documento = @Nombre"
+
+                                   , conexion6);
+            SqlDataAdapter sda6 = new SqlDataAdapter(cmd6);
+            cmd6.Parameters.AddWithValue("Nombre", Path.GetFileName(files[i]));
+            sda6.SelectCommand.CommandTimeout = 36000;
+            DataTable dt6 = new DataTable();
+            sda6.Fill(dt6);
+            conexion6.Dispose();
+            if (dt6.Rows.Count > 0)
+            {
+                Documento = dt6.Rows[0][2].ToString();
+                Carpeta = dt6.Rows[0][1].ToString();
+                Departamento = dt6.Rows[0][0].ToString();
+                Thread.Sleep(50);
+
+
+            }
+
+
+
+            if (Carpeta == "Obra civil/Presupuesto/Ctg Obra" 
+                || Carpeta == "Obra civil/Subcontrato/Expediente de Obra"
+                || Carpeta == "Obra civil/Subcontrato/Programa de Obra"
+                || Carpeta == "Obra civil/Subcontrato/Consolidados"
+                || Carpeta == "Obra civil/Control de Obra/Liberaciones"
+                || Carpeta == "Obra civil/Control de Obra/Requisiciones"
+                || Carpeta == "Obra civil/Control de Obra/Bitacora"
+                || Carpeta == "Obra civil/Control de Obra/Dispersiones"
+                || Carpeta == "Obra civil/Control de Obra/Almacen"
+                || Carpeta == "Obra civil/Control de Obra/Comprobacion Gastos"
+                || Carpeta == "Obra civil/Control de Obra/Asistencia"
+                || Carpeta == "Obra civil/Control de Obra/Reporte/Fotografico"
+                || Carpeta == "Obra civil/Control de Obra/Reporte/Fisico Fin"
+                || Carpeta == "Obra civil/Control de Obra/Reportes"
+                || Carpeta == "Obra civil/Control de Obra/Estimaciones"
+                || Carpeta == "Obra civil/Control de Obra/Reportes/Direccion"
+                || Carpeta == "Obra civil/Control de Obra/Dosier de Calidad"
+                || Carpeta == "Obra civil/Control de Obra/Orden de Cambios"
+                || Carpeta == "Obra civil/Control de Obra/Seguridad e Higiene"
+                || Carpeta == "Obra civil/Control de Obra/fotos"
+                || Carpeta == "Obra civil/Control de Obra/Lista de Materiales y equipos"
+                || Carpeta == "Obra civil/SIROC E IMSS/Registro de Siroc"
+                || Carpeta == "Obra civil/SIROC E IMSS/Subcontratistas"
+                || Carpeta == "Obra civil/SIROC E IMSS/Altas"
+                || Carpeta == "Obra civil/SIROC E IMSS/Pagos Imss"
+                || Carpeta == "Obra civil/Subcontratos/Contrato"
+                || Carpeta == "Obra civil/Subcontratos/Presupuesto"
+                || Carpeta == "Obra civil/Subcontratos/Concentrado Estimaciones"
+                || Carpeta == "Obra civil/Subcontratos/Estimaciones"  )
+            {
+
+                SqlConnection conexion = new SqlConnection(ObtenerCadena());
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(
+                                       "select" +
+                                       "[Ano], " +
+                                       "[tipo2], " +
+                                       "[Nombre], " +
+                                       "[Nombre2] " +
+
+                                       "from [Folio_proyectos>2019] where Nombre = @Nombre"
+
+                                       , conexion);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                cmd.Parameters.AddWithValue("Nombre", Folio);
+                sda.SelectCommand.CommandTimeout = 36000;
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+
+                    NombreProyecto = dt.Rows[0][3].ToString();
+                    Thread.Sleep(50);
+
+                    conexion.Dispose();
+                }
+
+                conexion.Dispose();
+
+                SqlConnection conexion4 = new SqlConnection(ObtenerCadena());
+                conexion4.Open();
+
+
+
+
+
+                SqlCommand cmd4 = new SqlCommand(
+                                       "select" +
+                                         "[Proyecto], " +
+                                       "[Obracivil], " +
+                                       "[SiroceImss]," +
+                                         "[Subcontratos]," +
+                                         "[ControldeObra]," +
+                                         "[Presupuesto]" +
+
+
+                                       "from [Proyectos_Avance_other] where Proyecto = @Nombre"
+
+                                       , conexion4);
+                SqlDataAdapter sda4 = new SqlDataAdapter(cmd4);
+                cmd4.Parameters.AddWithValue("Nombre", NombreProyecto);
+                sda4.SelectCommand.CommandTimeout = 36000;
+                DataTable dt4 = new DataTable();
+                sda4.Fill(dt4);
+                conexion4.Dispose();
+                if (dt4.Rows.Count > 0)
+                {
+                    ObraCivil = dt4.Rows[0][1].ToString();
+                    SirocEIMSS = dt4.Rows[0][2].ToString();
+                    Subcontratos = dt4.Rows[0][3].ToString();
+                    ControldeObra = dt4.Rows[0][4].ToString();
+                    Presupuesto = dt4.Rows[0][5].ToString();
+
+                    Thread.Sleep(50);
+
+                    if (ObraCivil == "" || ObraCivil == null) { ObraCivil = "0"; }
+                    if (SirocEIMSS == "" || SirocEIMSS == null) { SirocEIMSS = "0"; }
+                    if (Subcontratos == "" || Subcontratos == null) { Subcontratos = "0"; }
+                    if (ControldeObra == "" || ControldeObra == null) { ControldeObra = "0"; }
+                    if (Presupuesto == "" || Presupuesto == null) { Presupuesto = "0"; }
+
+                }
+                else {
+                    string PorcentajeComun = porcentaje2.ToString();
+                    proyectos_Avance_otherTableAdapter.InsertQuery(NombreProyecto, PorcentajeComun, "0", "0", "0","0","0","0"); }
+                int total = 47; decimal porcentaje, SumatoriaGeneral, Porcentajefinal;
+
+              
+
+                if (Carpeta == "Obra civil/Subcontratos/Contrato" || Carpeta == "Obra civil/Subcontratos/Presupuesto" || Carpeta == "Obra civil/Subcontratos/Concentrado Estimaciones" || Carpeta == "Obra civil/Subcontratos/Estimaciones"
+                || Carpeta == "Obra civil/Subcontrato/Expediente de Obra" || Carpeta == "Obra civil/Subcontrato/Programa de Obra" || Carpeta == "Obra civil/Subcontrato/Consolidados")
+                {
+                    string Porcentaje2 = porcentaje2.ToString();
+                    contador24 = contador24 + 1;
+                    porcentaje = (contador24 * 100) / 19;
+
+                    if (Subcontratos == "" || Subcontratos == null || Subcontratos == " ") { Subcontratos = "0"; }
+                    decimal Valor = Convert.ToDecimal(Subcontratos);
+           
+            
+                    //Porcentaje de carpeta
+                    string Porcentaje = porcentaje.ToString();
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil); 
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS); 
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos); 
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra); 
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+                    decimal Totalindus = ObraCivild + SirocEIMSSd + ControldeObrad + Presupuestod+Valor;
+                    SumatoriaGeneral = porcentaje2 + Totalindus;
+                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                        string PorcentajeFinal = Porcentajefinal.ToString();
+                        proyectos_Avance_otherTableAdapter.UpdateSubContratos(NombreProyecto,Porcentaje2, Porcentaje, PorcentajeFinal);
+                    
+
+                }
+                else if (Carpeta == "Obra civil/Presupuesto/Ctg Obra")
+                {
+                    string Porcentaje2 = porcentaje2.ToString();
+                    contador28 = contador28 + 1; ///////////////////////////////////////////cambiar
+                    porcentaje = (contador28 * 100) / 6;
+
+                    if (Presupuesto == "" || Presupuesto == null || Presupuesto == " ") { Presupuesto = "0"; }
+                    decimal Valor = Convert.ToDecimal(Presupuesto);
+
+
+                    //Porcentaje de carpeta
+                    string Porcentaje = porcentaje.ToString();
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+                    decimal Totalindus = ObraCivild + SirocEIMSSd + ControldeObrad + Subcontratosd + Valor;
+                    SumatoriaGeneral = porcentaje2 + Totalindus;
+                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    string PorcentajeFinal = Porcentajefinal.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdatePresupuesto(NombreProyecto, Porcentaje2, Porcentaje, PorcentajeFinal);
+
+                }
+                else if (Carpeta == "Obra civil/Control de Obra/Liberaciones" || Carpeta == "Obra civil/Control de Obra/Requisiciones" || Carpeta == "Obra civil/Control de Obra/Bitacora" || Carpeta == "Obra civil/Control de Obra/Dispersiones"
+                || Carpeta == "Obra civil/Control de Obra/Almacen" || Carpeta == "Obra civil/Control de Obra/Comprobacion Gastos" || Carpeta == "Obra civil/Control de Obra/Asistencia" || Carpeta == "Obra civil/Control de Obra/Reporte/Fotografico" || Carpeta == "Obra civil/Control de Obra/Reporte/Fisico Fin" || Carpeta == "Obra civil/Control de Obra/Reportes"
+                || Carpeta == "Obra civil/Control de Obra/Estimaciones" || Carpeta == "Obra civil/Control de Obra/Reportes/Direccion" || Carpeta == "Obra civil/Control de Obra/Dosier de Calidad" || Carpeta == "Obra civil/Control de Obra/Orden de Cambios"
+                || Carpeta == "Obra civil/Control de Obra/Seguridad e Higiene" || Carpeta == "Obra civil/Control de Obra/fotos" || Carpeta == "Obra civil/Control de Obra/Lista de Materiales y equipos")
+                {
+                    string Porcentaje2 = porcentaje2.ToString();
+                    contador29 = contador29 + 1;///////////////////////////////////
+                    porcentaje = (contador29 * 100) / 18;
+
+                    if (ControldeObra == "" || ControldeObra == null || ControldeObra == " ") { ControldeObra = "0"; }
+                    decimal Valor = Convert.ToDecimal(ControldeObra);
+
+
+                    //Porcentaje de carpeta
+                    string Porcentaje = porcentaje.ToString();
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+                    decimal Totalindus = ObraCivild + SirocEIMSSd + Presupuestod + Subcontratosd + Valor;
+                    SumatoriaGeneral = porcentaje2 + Totalindus;
+                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    string PorcentajeFinal = Porcentajefinal.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdateControldeObra(NombreProyecto, Porcentaje2, Porcentaje, PorcentajeFinal);
+
+
+                }
+                else if (Carpeta == "Obra civil/SIROC E IMSS/Registro de Siroc" || Carpeta == "Obra civil/SIROC E IMSS/Subcontratistas" || Carpeta == "Obra civil/SIROC E IMSS/Altas" || Carpeta == "Obra civil/SIROC E IMSS/Pagos Imss")
+                {
+                    string Porcentaje2 = porcentaje2.ToString();
+                    contador30 = contador30 + 1; ///////////////////////////cambiar
+                    porcentaje = (contador30 * 100) / 4;
+
+                    if (SirocEIMSS == "" || SirocEIMSS == null || SirocEIMSS == " ") { SirocEIMSS = "0"; }
+                    decimal Valor = Convert.ToDecimal(SirocEIMSS);
+
+
+                    //Porcentaje de carpeta
+                    string Porcentaje = porcentaje.ToString();
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+                    decimal Totalindus = ObraCivild + Subcontratosd + ControldeObrad + Presupuestod + Valor;
+                    SumatoriaGeneral = porcentaje2 + Totalindus;
+                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    string PorcentajeFinal = Porcentajefinal.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdateSiroc(NombreProyecto, Porcentaje2, Porcentaje, PorcentajeFinal);
+
+
+
+                }
+
+                ///////////////////////validador si esta en ceros el proyecto manda almenos el comun
+
+
+
+
+            }
+
+            else
+
+
+            {
+                if (ObraCivil == "" || ObraCivil == null) { ObraCivil = "0"; }
+                if (SirocEIMSS == "" || SirocEIMSS == null) { SirocEIMSS = "0"; }
+                if (Subcontratos == "" || Subcontratos == null) { Subcontratos = "0"; }
+                if (ControldeObra == "" || ControldeObra == null) { ControldeObra = "0"; }
+                if (Presupuesto == "" || Presupuesto == null) { Presupuesto = "0"; }
+
+                if (ObraCivil == "0" && SirocEIMSS == "0" && Subcontratos == "0" && ControldeObra == "0" && Presupuesto == "0")
+                {
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+
+                    decimal sumatotal = ObraCivild + SirocEIMSSd + Subcontratosd + ControldeObrad + Presupuestod + porcentaje2;
+                    decimal totalgeneral = sumatotal * 100 / 600;
+                    string Porcentaje2 = porcentaje2.ToString();
+                    string TotalGeneral = totalgeneral.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdateTotal(Porcentaje2, TotalGeneral, NombreProyecto);
+                }
+                else { }
+
+            }
+
 
 
 

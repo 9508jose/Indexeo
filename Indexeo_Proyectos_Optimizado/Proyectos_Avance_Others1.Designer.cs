@@ -287,9 +287,13 @@ namespace Indexeo_Proyectos_Optimizado {
             
             private global::System.Data.DataColumn columnSubcontratos;
             
-            private global::System.Data.DataColumn columnMemoriasCalculo;
-            
             private global::System.Data.DataColumn columnTotalGeneral;
+            
+            private global::System.Data.DataColumn columnTotalComun;
+            
+            private global::System.Data.DataColumn columnControldeObra;
+            
+            private global::System.Data.DataColumn columnPresupuesto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -358,17 +362,33 @@ namespace Indexeo_Proyectos_Optimizado {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MemoriasCalculoColumn {
+            public global::System.Data.DataColumn TotalGeneralColumn {
                 get {
-                    return this.columnMemoriasCalculo;
+                    return this.columnTotalGeneral;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TotalGeneralColumn {
+            public global::System.Data.DataColumn TotalComunColumn {
                 get {
-                    return this.columnTotalGeneral;
+                    return this.columnTotalComun;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ControldeObraColumn {
+                get {
+                    return this.columnControldeObra;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PresupuestoColumn {
+                get {
+                    return this.columnPresupuesto;
                 }
             }
             
@@ -409,15 +429,17 @@ namespace Indexeo_Proyectos_Optimizado {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Proyectos_Avance_otherRow AddProyectos_Avance_otherRow(string Proyecto, string Obracivil, string SiroceImss, string Subcontratos, string MemoriasCalculo, string TotalGeneral) {
+            public Proyectos_Avance_otherRow AddProyectos_Avance_otherRow(string Proyecto, string Obracivil, string SiroceImss, string Subcontratos, string TotalGeneral, string TotalComun, string ControldeObra, string Presupuesto) {
                 Proyectos_Avance_otherRow rowProyectos_Avance_otherRow = ((Proyectos_Avance_otherRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Proyecto,
                         Obracivil,
                         SiroceImss,
                         Subcontratos,
-                        MemoriasCalculo,
-                        TotalGeneral};
+                        TotalGeneral,
+                        TotalComun,
+                        ControldeObra,
+                        Presupuesto};
                 rowProyectos_Avance_otherRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProyectos_Avance_otherRow);
                 return rowProyectos_Avance_otherRow;
@@ -444,8 +466,10 @@ namespace Indexeo_Proyectos_Optimizado {
                 this.columnObracivil = base.Columns["Obracivil"];
                 this.columnSiroceImss = base.Columns["SiroceImss"];
                 this.columnSubcontratos = base.Columns["Subcontratos"];
-                this.columnMemoriasCalculo = base.Columns["MemoriasCalculo"];
                 this.columnTotalGeneral = base.Columns["TotalGeneral"];
+                this.columnTotalComun = base.Columns["TotalComun"];
+                this.columnControldeObra = base.Columns["ControldeObra"];
+                this.columnPresupuesto = base.Columns["Presupuesto"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -459,16 +483,22 @@ namespace Indexeo_Proyectos_Optimizado {
                 base.Columns.Add(this.columnSiroceImss);
                 this.columnSubcontratos = new global::System.Data.DataColumn("Subcontratos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubcontratos);
-                this.columnMemoriasCalculo = new global::System.Data.DataColumn("MemoriasCalculo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMemoriasCalculo);
                 this.columnTotalGeneral = new global::System.Data.DataColumn("TotalGeneral", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalGeneral);
+                this.columnTotalComun = new global::System.Data.DataColumn("TotalComun", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalComun);
+                this.columnControldeObra = new global::System.Data.DataColumn("ControldeObra", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnControldeObra);
+                this.columnPresupuesto = new global::System.Data.DataColumn("Presupuesto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPresupuesto);
                 this.columnProyecto.MaxLength = 2147483647;
                 this.columnObracivil.MaxLength = 2147483647;
                 this.columnSiroceImss.MaxLength = 2147483647;
                 this.columnSubcontratos.MaxLength = 2147483647;
-                this.columnMemoriasCalculo.MaxLength = 2147483647;
                 this.columnTotalGeneral.MaxLength = 2147483647;
+                this.columnTotalComun.MaxLength = 2147483647;
+                this.columnControldeObra.MaxLength = 2147483647;
+                this.columnPresupuesto.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -679,23 +709,6 @@ namespace Indexeo_Proyectos_Optimizado {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string MemoriasCalculo {
-                get {
-                    try {
-                        return ((string)(this[this.tableProyectos_Avance_other.MemoriasCalculoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MemoriasCalculo\' de la tabla \'Proyectos_Avance_other\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableProyectos_Avance_other.MemoriasCalculoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalGeneral {
                 get {
                     try {
@@ -708,6 +721,57 @@ namespace Indexeo_Proyectos_Optimizado {
                 }
                 set {
                     this[this.tableProyectos_Avance_other.TotalGeneralColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalComun {
+                get {
+                    try {
+                        return ((string)(this[this.tableProyectos_Avance_other.TotalComunColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalComun\' de la tabla \'Proyectos_Avance_other\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableProyectos_Avance_other.TotalComunColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ControldeObra {
+                get {
+                    try {
+                        return ((string)(this[this.tableProyectos_Avance_other.ControldeObraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ControldeObra\' de la tabla \'Proyectos_Avance_other\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableProyectos_Avance_other.ControldeObraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Presupuesto {
+                get {
+                    try {
+                        return ((string)(this[this.tableProyectos_Avance_other.PresupuestoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Presupuesto\' de la tabla \'Proyectos_Avance_other\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableProyectos_Avance_other.PresupuestoColumn] = value;
                 }
             }
             
@@ -761,18 +825,6 @@ namespace Indexeo_Proyectos_Optimizado {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsMemoriasCalculoNull() {
-                return this.IsNull(this.tableProyectos_Avance_other.MemoriasCalculoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetMemoriasCalculoNull() {
-                this[this.tableProyectos_Avance_other.MemoriasCalculoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTotalGeneralNull() {
                 return this.IsNull(this.tableProyectos_Avance_other.TotalGeneralColumn);
             }
@@ -781,6 +833,42 @@ namespace Indexeo_Proyectos_Optimizado {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalGeneralNull() {
                 this[this.tableProyectos_Avance_other.TotalGeneralColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalComunNull() {
+                return this.IsNull(this.tableProyectos_Avance_other.TotalComunColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalComunNull() {
+                this[this.tableProyectos_Avance_other.TotalComunColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsControldeObraNull() {
+                return this.IsNull(this.tableProyectos_Avance_other.ControldeObraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetControldeObraNull() {
+                this[this.tableProyectos_Avance_other.ControldeObraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPresupuestoNull() {
+                return this.IsNull(this.tableProyectos_Avance_other.PresupuestoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPresupuestoNull() {
+                this[this.tableProyectos_Avance_other.PresupuestoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -947,20 +1035,22 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             tableMapping.ColumnMappings.Add("Obracivil", "Obracivil");
             tableMapping.ColumnMappings.Add("SiroceImss", "SiroceImss");
             tableMapping.ColumnMappings.Add("Subcontratos", "Subcontratos");
-            tableMapping.ColumnMappings.Add("MemoriasCalculo", "MemoriasCalculo");
             tableMapping.ColumnMappings.Add("TotalGeneral", "TotalGeneral");
+            tableMapping.ColumnMappings.Add("TotalComun", "TotalComun");
+            tableMapping.ColumnMappings.Add("ControldeObra", "ControldeObra");
+            tableMapping.ColumnMappings.Add("Presupuesto", "Presupuesto");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Proyectos_Avance_other] ([Proyecto], [Obracivil], [SiroceImss]" +
-                ", [Subcontratos], [MemoriasCalculo], [TotalGeneral]) VALUES (@Proyecto, @Obraciv" +
-                "il, @SiroceImss, @Subcontratos, @MemoriasCalculo, @TotalGeneral)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Proyectos_Avance_other] ([Proyecto], [TotalComun], [Obracivil], [SiroceImss], [Subcontratos], [ControldeObra], [Presupuesto], [TotalGeneral]) VALUES (@Proyecto, @TotalComun, @Obracivil, @SiroceImss, @Subcontratos, @ControldeObra, @Presupuesto, @TotalGeneral)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Obracivil", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Obracivil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SiroceImss", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SiroceImss", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subcontratos", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Subcontratos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemoriasCalculo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemoriasCalculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControldeObra", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControldeObra", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Presupuesto", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Presupuesto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -974,67 +1064,104 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Proyecto, Obracivil, SiroceImss, Subcontratos, MemoriasCalculo, TotalGener" +
-                "al FROM dbo.Proyectos_Avance_other";
+            this._commandCollection[0].CommandText = "SELECT Proyecto, TotalComun, Obracivil, SiroceImss, Subcontratos, ControldeObra, " +
+                "Presupuesto, TotalGeneral FROM dbo.Proyectos_Avance_other";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[Proyectos_Avance_other] ([Proyecto], [Obracivil], [SiroceImss]" +
-                ", [Subcontratos], [MemoriasCalculo], [TotalGeneral]) VALUES (@Proyecto, @Obraciv" +
-                "il, @SiroceImss, @Subcontratos, @MemoriasCalculo, @TotalGeneral)";
+            this._commandCollection[1].CommandText = @"INSERT INTO [dbo].[Proyectos_Avance_other] ([Proyecto], [TotalComun], [Obracivil], [SiroceImss], [Subcontratos], [ControldeObra], [Presupuesto], [TotalGeneral]) VALUES (@Proyecto, @TotalComun, @Obracivil, @SiroceImss, @Subcontratos, @ControldeObra, @Presupuesto, @TotalGeneral)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Obracivil", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Obracivil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SiroceImss", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SiroceImss", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subcontratos", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Subcontratos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemoriasCalculo", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "MemoriasCalculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControldeObra", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ControldeObra", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Presupuesto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Presupuesto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto,  MemoriasCalcul" +
-                "o = @MemoriasCalculo, TotalGeneral = @TotalGeneral\r\nWHERE  (Proyecto = @Proyecto" +
-                ")";
+            this._commandCollection[2].CommandText = "UPDATE       Proyectos_Avance_other\r\nSET                Proyecto = @Proyecto, Tot" +
+                "alComun = @TotalComun, ControldeObra = @ControldeObra, TotalGeneral = @TotalGene" +
+                "ral\r\nWHERE        (Proyecto = @Proyecto)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemoriasCalculo", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "MemoriasCalculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControldeObra", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ControldeObra", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto, Obracivil = @Ob" +
-                "racivil, TotalGeneral = @TotalGeneral\r\nWHERE  (Proyecto = @Proyecto)";
+            this._commandCollection[3].CommandText = "UPDATE       Proyectos_Avance_other\r\nSET                Proyecto = @Proyecto, Tot" +
+                "alComun = @TotalComun, Obracivil = @Obracivil, TotalGeneral = @TotalGeneral\r\nWHE" +
+                "RE        (Proyecto = @Proyecto)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Obracivil", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Obracivil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto, Obracivil = @Ob" +
-                "racivil, SiroceImss = @SiroceImss, Subcontratos = @Subcontratos, MemoriasCalculo" +
-                " = @MemoriasCalculo, TotalGeneral = @TotalGeneral\r\nWHERE  (Proyecto = @Proyecto)" +
-                "";
+            this._commandCollection[4].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto, TotalComun = @T" +
+                "otalComun, Presupuesto = @Presupuesto, TotalGeneral = @TotalGeneral\r\nWHERE  (Pro" +
+                "yecto = @Proyecto)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Obracivil", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Obracivil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SiroceImss", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SiroceImss", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subcontratos", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Subcontratos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemoriasCalculo", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "MemoriasCalculo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Presupuesto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Presupuesto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto,SiroceImss = @Si" +
-                "roceImss, TotalGeneral = @TotalGeneral\r\nWHERE  (Proyecto = @Proyecto)";
+            this._commandCollection[5].CommandText = @"UPDATE       Proyectos_Avance_other
+SET                Proyecto = @Proyecto, TotalComun = @TotalComun, Obracivil = @Obracivil, SiroceImss = @SiroceImss, Subcontratos = @Subcontratos, ControldeObra = @ControldeObra, Presupuesto = @Presupuesto, 
+                         TotalGeneral = @TotalGeneral
+WHERE        (Proyecto = @Proyecto)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Obracivil", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Obracivil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SiroceImss", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SiroceImss", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subcontratos", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Subcontratos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControldeObra", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "ControldeObra", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Presupuesto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Presupuesto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @ProyectoSubcontratos = @S" +
-                "ubcontratos,TotalGeneral = @TotalGeneral\r\nWHERE  (Proyecto = @Proyecto)";
+            this._commandCollection[6].CommandText = "UPDATE Proyectos_Avance_other\r\nSET          Proyecto = @Proyecto, TotalComun = @T" +
+                "otalComun, SiroceImss= @SiroceImss, TotalGeneral = @TotalGeneral\r\nWHERE  (Proyec" +
+                "to = @Proyecto)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SiroceImss", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "SiroceImss", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "UPDATE       Proyectos_Avance_other\r\nSET                Proyecto = @Proyecto, Tot" +
+                "alComun = @TotalComun, Subcontratos = @Subcontratos, TotalGeneral = @TotalGenera" +
+                "l\r\nWHERE        (Proyecto = @Proyecto)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Subcontratos", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Subcontratos", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = "UPDATE Proyectos_Avance_other\r\nSET     TotalComun = @TotalComun, TotalGeneral = @" +
+                "TotalGeneral\r\nWHERE  (Proyecto = @Proyecto)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalGeneral", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalGeneral", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = "UPDATE       Proyectos_Avance_other\r\nSET            TotalComun = @TotalComun\r\nWHE" +
+                "RE        (Proyecto = @Proyecto)";
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalComun", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TotalComun", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Proyecto", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Proyecto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1094,42 +1221,54 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Proyecto, string Obracivil, string SiroceImss, string Subcontratos, string MemoriasCalculo, string TotalGeneral) {
+        public virtual int Insert(string Proyecto, string TotalComun, string Obracivil, string SiroceImss, string Subcontratos, string ControldeObra, string Presupuesto, string TotalGeneral) {
             if ((Proyecto == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((Obracivil == null)) {
+            if ((TotalComun == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Obracivil));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((SiroceImss == null)) {
+            if ((Obracivil == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(SiroceImss));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Obracivil));
             }
-            if ((Subcontratos == null)) {
+            if ((SiroceImss == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Subcontratos));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(SiroceImss));
             }
-            if ((MemoriasCalculo == null)) {
+            if ((Subcontratos == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(MemoriasCalculo));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Subcontratos));
             }
-            if ((TotalGeneral == null)) {
+            if ((ControldeObra == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(TotalGeneral));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ControldeObra));
+            }
+            if ((Presupuesto == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Presupuesto));
+            }
+            if ((TotalGeneral == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1151,7 +1290,7 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQuery(string Proyecto, string Obracivil, string SiroceImss, string Subcontratos, string MemoriasCalculo, string TotalGeneral) {
+        public virtual int InsertQuery(string Proyecto, string TotalComun, string Obracivil, string SiroceImss, string Subcontratos, string ControldeObra, string Presupuesto, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((Proyecto == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1159,35 +1298,47 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((Obracivil == null)) {
+            if ((TotalComun == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(Obracivil));
+                command.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((SiroceImss == null)) {
+            if ((Obracivil == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(SiroceImss));
+                command.Parameters[2].Value = ((string)(Obracivil));
             }
-            if ((Subcontratos == null)) {
+            if ((SiroceImss == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(Subcontratos));
+                command.Parameters[3].Value = ((string)(SiroceImss));
             }
-            if ((MemoriasCalculo == null)) {
+            if ((Subcontratos == null)) {
                 command.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(MemoriasCalculo));
+                command.Parameters[4].Value = ((string)(Subcontratos));
             }
-            if ((TotalGeneral == null)) {
+            if ((ControldeObra == null)) {
                 command.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[5].Value = ((string)(TotalGeneral));
+                command.Parameters[5].Value = ((string)(ControldeObra));
+            }
+            if ((Presupuesto == null)) {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Presupuesto));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[7].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1210,7 +1361,7 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateMemorias(string Proyecto, string MemoriasCalculo, string TotalGeneral) {
+        public virtual int UpdateControldeObra(string Proyecto, string TotalComun, string ControldeObra, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((Proyecto == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1218,17 +1369,23 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((MemoriasCalculo == null)) {
+            if ((TotalComun == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(MemoriasCalculo));
+                command.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((TotalGeneral == null)) {
+            if ((ControldeObra == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(TotalGeneral));
+                command.Parameters[2].Value = ((string)(ControldeObra));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1251,7 +1408,7 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateObraCivil(string Proyecto, string Obracivil, string TotalGeneral) {
+        public virtual int UpdateObraCivil(string Proyecto, string TotalComun, string Obracivil, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Proyecto == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1259,17 +1416,23 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((Obracivil == null)) {
+            if ((TotalComun == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(Obracivil));
+                command.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((TotalGeneral == null)) {
+            if ((Obracivil == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(TotalGeneral));
+                command.Parameters[2].Value = ((string)(Obracivil));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1292,7 +1455,7 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateQuery(string Proyecto, string Obracivil, string SiroceImss, string Subcontratos, string MemoriasCalculo, string TotalGeneral) {
+        public virtual int UpdatePresupuesto(string Proyecto, string TotalComun, string Presupuesto, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Proyecto == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1300,35 +1463,23 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((Obracivil == null)) {
+            if ((TotalComun == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(Obracivil));
+                command.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((SiroceImss == null)) {
+            if ((Presupuesto == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(SiroceImss));
+                command.Parameters[2].Value = ((string)(Presupuesto));
             }
-            if ((Subcontratos == null)) {
+            if ((TotalGeneral == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(Subcontratos));
-            }
-            if ((MemoriasCalculo == null)) {
-                command.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[4].Value = ((string)(MemoriasCalculo));
-            }
-            if ((TotalGeneral == null)) {
-                command.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[5].Value = ((string)(TotalGeneral));
+                command.Parameters[3].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1351,7 +1502,7 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateSiroc(string Proyecto, string SiroceImss, string TotalGeneral) {
+        public virtual int UpdateQuery(string Proyecto, string TotalComun, string Obracivil, string SiroceImss, string Subcontratos, string ControldeObra, string Presupuesto, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Proyecto == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1359,17 +1510,47 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
             else {
                 command.Parameters[0].Value = ((string)(Proyecto));
             }
-            if ((SiroceImss == null)) {
+            if ((TotalComun == null)) {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[1].Value = ((string)(SiroceImss));
+                command.Parameters[1].Value = ((string)(TotalComun));
             }
-            if ((TotalGeneral == null)) {
+            if ((Obracivil == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(TotalGeneral));
+                command.Parameters[2].Value = ((string)(Obracivil));
+            }
+            if ((SiroceImss == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(SiroceImss));
+            }
+            if ((Subcontratos == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Subcontratos));
+            }
+            if ((ControldeObra == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[5].Value = ((string)(ControldeObra));
+            }
+            if ((Presupuesto == null)) {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Presupuesto));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[7].Value = ((string)(TotalGeneral));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1392,8 +1573,155 @@ namespace Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateSubContratos() {
+        public virtual int UpdateSiroc(string Proyecto, string TotalComun, string SiroceImss, string TotalGeneral) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            if ((Proyecto == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Proyecto));
+            }
+            if ((TotalComun == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(TotalComun));
+            }
+            if ((SiroceImss == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(SiroceImss));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(TotalGeneral));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateSubContratos(string Proyecto, string TotalComun, string Subcontratos, string TotalGeneral) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            if ((Proyecto == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Proyecto));
+            }
+            if ((TotalComun == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(TotalComun));
+            }
+            if ((Subcontratos == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Subcontratos));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(TotalGeneral));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateTotal(string TotalComun, string TotalGeneral, string Proyecto) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
+            if ((TotalComun == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(TotalComun));
+            }
+            if ((TotalGeneral == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(TotalGeneral));
+            }
+            if ((Proyecto == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Proyecto));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateTotalComun(string TotalComun, string Proyecto) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
+            if ((TotalComun == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(TotalComun));
+            }
+            if ((Proyecto == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Proyecto));
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
