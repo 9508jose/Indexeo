@@ -56,11 +56,13 @@ namespace Indexeo_Proyectos_Optimizado
             this.obracivilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siroceImssDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subcontratosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.memoriasCalculoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalGeneralDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proyectosAvanceotherBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.proyectos_Avance_Others = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_Others();
             this.proyectos_Avance_otherTableAdapter = new Indexeo_Proyectos_Optimizado.Proyectos_Avance_OthersTableAdapters.Proyectos_Avance_otherTableAdapter();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+     
+            this.limpiadorPorcentajesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceINOXBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_INOX)).BeginInit();
@@ -75,13 +77,16 @@ namespace Indexeo_Proyectos_Optimizado
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceotherBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+      
+            ((System.ComponentModel.ISupportInitialize)(this.limpiadorPorcentajesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(264, 43);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(170, 21);
             this.comboBox1.TabIndex = 0;
@@ -97,7 +102,7 @@ namespace Indexeo_Proyectos_Optimizado
             this.totalGeneralDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.proyectosAvanceINOXBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(334, 151);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -215,11 +220,10 @@ namespace Indexeo_Proyectos_Optimizado
             this.obracivilDataGridViewTextBoxColumn,
             this.siroceImssDataGridViewTextBoxColumn,
             this.subcontratosDataGridViewTextBoxColumn,
-            this.memoriasCalculoDataGridViewTextBoxColumn,
             this.totalGeneralDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.proyectosAvanceotherBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(112, 151);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
@@ -258,14 +262,6 @@ namespace Indexeo_Proyectos_Optimizado
             this.subcontratosDataGridViewTextBoxColumn.Name = "subcontratosDataGridViewTextBoxColumn";
             this.subcontratosDataGridViewTextBoxColumn.Width = 125;
             // 
-            // memoriasCalculoDataGridViewTextBoxColumn
-            // 
-            this.memoriasCalculoDataGridViewTextBoxColumn.DataPropertyName = "MemoriasCalculo";
-            this.memoriasCalculoDataGridViewTextBoxColumn.HeaderText = "MemoriasCalculo";
-            this.memoriasCalculoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.memoriasCalculoDataGridViewTextBoxColumn.Name = "memoriasCalculoDataGridViewTextBoxColumn";
-            this.memoriasCalculoDataGridViewTextBoxColumn.Width = 125;
-            // 
             // totalGeneralDataGridViewTextBoxColumn1
             // 
             this.totalGeneralDataGridViewTextBoxColumn1.DataPropertyName = "TotalGeneral";
@@ -288,15 +284,28 @@ namespace Indexeo_Proyectos_Optimizado
             // 
             this.proyectos_Avance_otherTableAdapter.ClearBeforeFill = true;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.DataSource = this.limpiadorPorcentajesBindingSource;
+            this.dataGridView3.Location = new System.Drawing.Point(264, 284);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(105, 46);
+            this.dataGridView3.TabIndex = 3;
+            // 
+            // limpiadorPorcentajes
+
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -314,6 +323,9 @@ namespace Indexeo_Proyectos_Optimizado
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectosAvanceotherBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyectos_Avance_Others)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+      
+            ((System.ComponentModel.ISupportInitialize)(this.limpiadorPorcentajesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,6 +364,9 @@ namespace Indexeo_Proyectos_Optimizado
         private System.Windows.Forms.DataGridViewTextBoxColumn subcontratosDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoriasCalculoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalGeneralDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.BindingSource limpiadorPorcentajesBindingSource;
+ 
     }
 }
 

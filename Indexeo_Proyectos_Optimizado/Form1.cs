@@ -22,7 +22,7 @@ namespace Indexeo_Proyectos_Optimizado
         }
         String AltaDocClientes="", Atencioncliente="", CierreProyecto="", ComprasProyecto="", ComprasFacturas="", ComprasOrdendeCompra="",ComprasComparativas="", DosierCertificadoCalidad="", DosierEquipos="",ListaInox="",InstalacionInox="",TotalComun="";
         String DosierCartaGarantia, DosierConstancia, DosierFotos, DoiserCalidadAgua, DosierPruebasEquipo, DosierPruebasEstanquiedad="", DosierPruebasInstalaciones="", Encuestas="", EntregaDocumentos="", ExpedienteComercial="", ExpedienteTecnico="", FabricacionyEquipamiento="", InstalacionesyArranque="", InstalacionAlmacen="", InstalacionCajachica="", InstalacionComprobaciones="", InstalacionDispersion="", InstalacionFotos="", InstalacionesOrden="", InstalacionReportes="", InstalacioneRequisiciones="", OperacionyMantenimiento="", PedidoInterno="", Planos="", Posventa="",Obracivil,ListadeMateriales="",InstalacionyPreparativos="";
-        String DepAtencion = "", Depproduccion = "", DepFinanzas = "", DepProyectos = "", DepEquip = "", DepVentas = "";
+
         decimal porcentaje2;
         String ValorLista = "0", ValorPreparativos = "0", NombreProyecto="";
         String ObraCivil = "", SirocEIMSS = "", Subcontratos = "", ControldeObra = "", TotalComunOtro = "", Presupuesto = "";
@@ -69,8 +69,8 @@ AtencionClientes
             this.proyectos_Avance_ArchivosTableAdapter.Fill(this.proyectosArchivos.Proyectos_Avance_Archivos);
             // TODO: esta línea de código carga datos en la tabla 'proyectos_Avance._Proyectos_Avance' Puede moverla o quitarla según sea necesario.
             this.proyectos_AvanceTableAdapter.Fill(this.proyectos_Avance._Proyectos_Avance);
+            proyectos_AvanceTableAdapter.LimpiadorPorcentajes();
             iniciador();
-      
         }
 
         public static string ObtenerCadena()
@@ -135,6 +135,20 @@ AtencionClientes
         }
         public void ConsultaProyecto()
         {
+
+            if (Tipo == "Proyectos-Inox")
+            {
+
+                ActualizaPorcentajesINOXFinal();
+            }
+            else if (Tipo == "" || Tipo == null) { }
+            else
+            {
+
+                ActualizaPorcentajesINDPotFinal();
+            }
+           
+
             SqlConnection conexion = new SqlConnection(ObtenerCadena());
             conexion.Open();
             SqlCommand cmd = new SqlCommand(
@@ -165,11 +179,16 @@ AtencionClientes
                 files = Directory.GetFiles(@"G:\SGC-PROYECTOS-CBR\SGC\" + Año + "\\" + Tipo + "\\" + Folio, "*", SearchOption.AllDirectories);
                 index_carpetasTableAdapter.limpia();
                 Thread.Sleep(50);
+                porcentaje2 = 0;
+
                 if (Tipo == "Proyectos-Inox")
                 {
+                
                     index_carpetasTableAdapter.InsertQueryINOX();
                 }
-                else { index_carpetasTableAdapter.InsertQueryPOT(); }
+                else {
+                   
+                    index_carpetasTableAdapter.InsertQueryPOT(); }
                 index_carpetasTableAdapter.InsertQuery();
     
                 Ingresor();
@@ -1061,7 +1080,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
             {
                 int total = 25; decimal porcentaje;
                 contador2 = contador2 + 1;
-                porcentaje = (contador2 * 100) / 21;
+                porcentaje = (contador2 * 100) / 25;
                 string Porcentaje = porcentaje.ToString();
                 proyectos_AvanceTableAdapter.Actualiza_index(
 
@@ -1345,7 +1364,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
             Decimal Gen = Convert.ToDecimal(ValorGeneral);
             Decimal TotalGeneral = (Gen * 100) / 300;
 
-            //proyectos_Avance_INOXTableAdapter.UpdateGeneral(General, TotalGeneral.ToString(),Nombre);
+            proyectos_Avance_INOXTableAdapter.UpdateGeneral(General, TotalGeneral.ToString(),Nombre);
 
             decimal ventas = Convert.ToDecimal(Ventas),
             Atencionacliente = Convert.ToDecimal(AtencionClientes),
@@ -1353,7 +1372,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
             finanzas = Convert.ToDecimal(Finanzas),
             proyectos = Convert.ToDecimal(Proyectos), equip = Convert.ToDecimal(EquipamientoeInstalaciones);
             generalporcentaje = ventas + Atencionacliente + produccion + finanzas + proyectos + equip;
-            porcentaje2 = (generalporcentaje * 100) / 700;
+            porcentaje2 = (generalporcentaje * 100) / 600;
             string Porcentaje2 = porcentaje2.ToString();
             if (Carpeta == "Alta y Documentos Clientes")
             {
@@ -1383,7 +1402,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                 , EquipamientoeInstalaciones_FabricacionyEquipamiento
                 , EquipamientoeInstalaciones_Instalacionyarranque
                 , EquipamientoeInstalaciones_OperacionyMantenimiento
-                , Porcentaje2
+                , porcentaje2.ToString()
                  , Nombre
 
 
@@ -1419,7 +1438,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                 , EquipamientoeInstalaciones_FabricacionyEquipamiento
                 , EquipamientoeInstalaciones_Instalacionyarranque
                 , EquipamientoeInstalaciones_OperacionyMantenimiento
-                , Porcentaje2
+                , porcentaje2.ToString()
                  , Nombre
            );
             }
@@ -1961,8 +1980,10 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                  , Nombre
            );
             }
-          
-         
+
+            generalporcentaje = ventas + Atencionacliente + produccion + finanzas + proyectos + equip;
+            porcentaje2 = (generalporcentaje * 100) / 600;
+            proyectos_AvanceTableAdapter.ActualizaPorcentajefinal(porcentaje2.ToString(), Nombre);
 
         }
 
@@ -2222,6 +2243,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
             }
             else{
                 if (ValorLista == "" || ValorLista == null) { ValorLista = "0"; }
+                if (ListaInox == "" || ListaInox == null) { ListaInox = "0"; }
                 if (ValorPreparativos == "" || ValorPreparativos == null) { ValorPreparativos = "0"; }
                 if (ValorLista == "0" && ValorPreparativos == "0")
                 {
@@ -2238,6 +2260,65 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                 else { }
               
             }
+        }
+        public void ActualizaPorcentajesINOXFinal()
+        {
+
+          
+
+
+
+                SqlConnection conexion4 = new SqlConnection(ObtenerCadena());
+                conexion4.Open();
+
+
+
+
+
+                SqlCommand cmd4 = new SqlCommand(
+                                       "select" +
+                                         "[Proyecto], " +
+                                       "[ListadeMaterialesyEquipos], " +
+                                       "[InstalacionyPreparativos]" +
+
+                                       "from [Proyectos_Avance_INOX] where Proyecto = @Nombre"
+
+                                       , conexion4);
+                SqlDataAdapter sda4 = new SqlDataAdapter(cmd4);
+                cmd4.Parameters.AddWithValue("Nombre", NombreProyecto);
+                sda4.SelectCommand.CommandTimeout = 36000;
+                DataTable dt4 = new DataTable();
+                sda4.Fill(dt4);
+                conexion4.Dispose();
+                if (dt4.Rows.Count > 0)
+                {
+                    ValorPreparativos = dt4.Rows[0][2].ToString();
+                    ValorLista = dt4.Rows[0][1].ToString();
+
+                    Thread.Sleep(50);
+
+                   
+                }
+                else
+                {
+                  
+                }
+            if (ValorLista == "" || ValorLista == null) { ValorLista = "0"; }
+            if (ValorPreparativos == "" || ValorPreparativos == null) { ValorPreparativos = "0"; }
+
+            decimal Preparativos = Convert.ToDecimal(ValorPreparativos);
+                decimal Comun = Convert.ToDecimal(porcentaje2);
+                decimal Lista = Convert.ToDecimal(ListaInox);
+
+                decimal sumatotal = Lista + Preparativos + Comun;
+                decimal totalgeneral = sumatotal * 100 / 300;
+                string Porcentaje2 = porcentaje2.ToString();
+                string TotalGeneral = totalgeneral.ToString();
+                proyectos_Avance_INOXTableAdapter.UpdateTotales(Porcentaje2, TotalGeneral, NombreProyecto);
+
+            
+
+         
         }
 
         public void ActualizaPorcentajesINDPot()
@@ -2406,7 +2487,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                     decimal Presupuestod = Convert.ToDecimal(Presupuesto);
                     decimal Totalindus = ObraCivild + SirocEIMSSd + ControldeObrad + Presupuestod+Valor;
                     SumatoriaGeneral = porcentaje2 + Totalindus;
-                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    Porcentajefinal = (SumatoriaGeneral * 100) / 600;
                         string PorcentajeFinal = Porcentajefinal.ToString();
                         proyectos_Avance_otherTableAdapter.UpdateSubContratos(NombreProyecto,Porcentaje2, Porcentaje, PorcentajeFinal);
                     
@@ -2431,7 +2512,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                     decimal Presupuestod = Convert.ToDecimal(Presupuesto);
                     decimal Totalindus = ObraCivild + SirocEIMSSd + ControldeObrad + Subcontratosd + Valor;
                     SumatoriaGeneral = porcentaje2 + Totalindus;
-                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    Porcentajefinal = (SumatoriaGeneral * 100) / 600;
                     string PorcentajeFinal = Porcentajefinal.ToString();
                     proyectos_Avance_otherTableAdapter.UpdatePresupuesto(NombreProyecto, Porcentaje2, Porcentaje, PorcentajeFinal);
 
@@ -2458,7 +2539,7 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                     decimal Presupuestod = Convert.ToDecimal(Presupuesto);
                     decimal Totalindus = ObraCivild + SirocEIMSSd + Presupuestod + Subcontratosd + Valor;
                     SumatoriaGeneral = porcentaje2 + Totalindus;
-                    Porcentajefinal = SumatoriaGeneral * 100 / 600;
+                    Porcentajefinal = (SumatoriaGeneral * 100) / 600;
                     string PorcentajeFinal = Porcentajefinal.ToString();
                     proyectos_Avance_otherTableAdapter.UpdateControldeObra(NombreProyecto, Porcentaje2, Porcentaje, PorcentajeFinal);
 
@@ -2517,12 +2598,101 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
                     decimal Presupuestod = Convert.ToDecimal(Presupuesto);
 
                     decimal sumatotal = ObraCivild + SirocEIMSSd + Subcontratosd + ControldeObrad + Presupuestod + porcentaje2;
-                    decimal totalgeneral = sumatotal * 100 / 600;
+                    decimal totalgeneral = (sumatotal * 100) / 600;
                     string Porcentaje2 = porcentaje2.ToString();
                     string TotalGeneral = totalgeneral.ToString();
                     proyectos_Avance_otherTableAdapter.UpdateTotal(Porcentaje2, TotalGeneral, NombreProyecto);
                 }
-                else { }
+                else {
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+
+                    decimal sumatotal = ObraCivild + SirocEIMSSd + Subcontratosd + ControldeObrad + Presupuestod + porcentaje2;
+                    decimal totalgeneral = (sumatotal * 100) / 600;
+                    string Porcentaje2 = porcentaje2.ToString();
+                    string TotalGeneral = totalgeneral.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdateTotal(Porcentaje2, TotalGeneral, NombreProyecto);
+                }
+
+            }
+
+
+
+
+        }
+        public void ActualizaPorcentajesINDPotFinal()
+        {
+
+           
+                SqlConnection conexion4 = new SqlConnection(ObtenerCadena());
+                conexion4.Open();
+
+
+
+
+
+                SqlCommand cmd4 = new SqlCommand(
+                                       "select" +
+                                         "[Proyecto], " +
+                                       "[Obracivil], " +
+                                       "[SiroceImss]," +
+                                         "[Subcontratos]," +
+                                         "[ControldeObra]," +
+                                         "[Presupuesto]" +
+
+
+                                       "from [Proyectos_Avance_other] where Proyecto = @Nombre"
+
+                                       , conexion4);
+                SqlDataAdapter sda4 = new SqlDataAdapter(cmd4);
+                cmd4.Parameters.AddWithValue("Nombre", NombreProyecto);
+                sda4.SelectCommand.CommandTimeout = 36000;
+                DataTable dt4 = new DataTable();
+                sda4.Fill(dt4);
+                conexion4.Dispose();
+                if (dt4.Rows.Count > 0)
+                {
+                    ObraCivil = dt4.Rows[0][1].ToString();
+                    SirocEIMSS = dt4.Rows[0][2].ToString();
+                    Subcontratos = dt4.Rows[0][3].ToString();
+                    ControldeObra = dt4.Rows[0][4].ToString();
+                    Presupuesto = dt4.Rows[0][5].ToString();
+
+                    Thread.Sleep(50);
+
+
+                }
+                else
+                {
+                  
+                }
+                int total = 47; decimal porcentaje, SumatoriaGeneral, Porcentajefinal;
+
+
+
+
+                if (ObraCivil == "" || ObraCivil == null) { ObraCivil = "0"; }
+                if (SirocEIMSS == "" || SirocEIMSS == null) { SirocEIMSS = "0"; }
+                if (Subcontratos == "" || Subcontratos == null) { Subcontratos = "0"; }
+                if (ControldeObra == "" || ControldeObra == null) { ControldeObra = "0"; }
+                if (Presupuesto == "" || Presupuesto == null) { Presupuesto = "0"; }
+
+             
+                    decimal ObraCivild = Convert.ToDecimal(ObraCivil);
+                    decimal SirocEIMSSd = Convert.ToDecimal(SirocEIMSS);
+                    decimal Subcontratosd = Convert.ToDecimal(Subcontratos);
+                    decimal ControldeObrad = Convert.ToDecimal(ControldeObra);
+                    decimal Presupuestod = Convert.ToDecimal(Presupuesto);
+
+                    decimal sumatotal = ObraCivild + SirocEIMSSd + Subcontratosd + ControldeObrad + Presupuestod + porcentaje2;
+                    decimal totalgeneral = (sumatotal * 100) / 600;
+                    string Porcentaje2 = porcentaje2.ToString();
+                    string TotalGeneral = totalgeneral.ToString();
+                    proyectos_Avance_otherTableAdapter.UpdateTotal(Porcentaje2, TotalGeneral, NombreProyecto);
+                
 
             }
 
@@ -2532,5 +2702,5 @@ SqlConnection conexion = new SqlConnection(ObtenerCadena());
         }
 
     }
-}
+
 
