@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dg_Radiografia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dg_Radiografia.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +93,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Proyectos_Avance_Others1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Radiografia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Radiografia.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +110,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Dg_Radiografia.xsc">
+      <DependentUpon>Dg_Radiografia.xsd</DependentUpon>
+    </None>
+    <None Include="Dg_Radiografia.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Dg_Radiografia.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dg_Radiografia.xss">
+      <DependentUpon>Dg_Radiografia.xsd</DependentUpon>
+    </None>
     <None Include="index_Carpetas.xsc">
       <DependentUpon>index_Carpetas.xsd</DependentUpon>
     </None>
@@ -107,6 +132,7 @@
     <None Include="index_Carpetas.xss">
       <DependentUpon>index_Carpetas.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,6 +196,17 @@
     </None>
     <None Include="Proyectos_Avance_Others1.xss">
       <DependentUpon>Proyectos_Avance_Others1.xsd</DependentUpon>
+    </None>
+    <None Include="Radiografia.xsc">
+      <DependentUpon>Radiografia.xsd</DependentUpon>
+    </None>
+    <None Include="Radiografia.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Radiografia.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Radiografia.xss">
+      <DependentUpon>Radiografia.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

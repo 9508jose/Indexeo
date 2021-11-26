@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +25,12 @@ namespace Indexeo_Proyectos_Optimizado
         String AltaDocClientes="", Atencioncliente="", CierreProyecto="", ComprasProyecto="", ComprasFacturas="", ComprasOrdendeCompra="",ComprasComparativas="", DosierCertificadoCalidad="", DosierEquipos="",ListaInox="",InstalacionInox="",TotalComun="";
         String DosierCartaGarantia, DosierConstancia, DosierFotos, DoiserCalidadAgua, DosierPruebasEquipo, DosierPruebasEstanquiedad="", DosierPruebasInstalaciones="", Encuestas="", EntregaDocumentos="", ExpedienteComercial="", ExpedienteTecnico="", FabricacionyEquipamiento="", InstalacionesyArranque="", InstalacionAlmacen="", InstalacionCajachica="", InstalacionComprobaciones="", InstalacionDispersion="", InstalacionFotos="", InstalacionesOrden="", InstalacionReportes="", InstalacioneRequisiciones="", OperacionyMantenimiento="", PedidoInterno="", Planos="", Posventa="",Obracivil,ListadeMateriales="",InstalacionyPreparativos="";
 
+        String Email_1, Email_2, Email_3, Email_4, Email_5, Email_6, Email_7, Email_8, Email_9, Email_10, body2;
+        String TotalUsuarios = "";
+
+        String Email_11, Email_12, Email_13, Email_14, Email_15, Email_16, Email_17, Email_18, Email_19, Email_20,Email_21,Email_22,Email_23;
+        String Email_24, Email_25, Email_26, Email_27, Email_28, Email_29, Email_30, Email_31, Email_32, Email_33, Email_34, Email_35, Email_36;
+        String Email_37, Email_38, Email_39, Email_40;
         decimal porcentaje2;
         String ValorLista = "0", ValorPreparativos = "0", NombreProyecto="";
         String ObraCivil = "", SirocEIMSS = "", Subcontratos = "", ControldeObra = "", TotalComunOtro = "", Presupuesto = "";
@@ -31,7 +39,7 @@ namespace Indexeo_Proyectos_Optimizado
         decimal porcentaje, generalporcentaje, porcentajeinox;
         decimal valorproyecto;
         String TotalProyectos = "",Año,Tipo,Nombre,Folio,Totalrestantes,Documento,Carpeta,Departamento;
-        int TotalProyectosEntero, contadorProyectos, k1, Totalrestantesentero,k2,contadorRestantes;
+        int TotalProyectosEntero, contadorProyectos, k1, Totalrestantesentero,k2,contadorRestantes,Totalusuario,contadorusuarios;
         string[] files;
         int i;
         string
@@ -56,9 +64,16 @@ AtencionClientes
 , EquipamientoeInstalaciones_Instalacionyarranque
 , EquipamientoeInstalaciones_OperacionyMantenimiento
 , General;
-
+        String dat;
+        string s;
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'radiografia.RADIOGRAFIA' Puede moverla o quitarla según sea necesario.
+            this.rADIOGRAFIATableAdapter.Fill(this.radiografia.RADIOGRAFIA);
+            // TODO: esta línea de código carga datos en la tabla 'radiografia.RADIOGRAFIA' Puede moverla o quitarla según sea necesario.
+         
+            // TODO: esta línea de código carga datos en la tabla 'dg_Radiografia.RADIOGRAFIA' Puede moverla o quitarla según sea necesario.
+           
             // TODO: esta línea de código carga datos en la tabla 'proyectos_Avance_Others.Proyectos_Avance_other' Puede moverla o quitarla según sea necesario.
             this.proyectos_Avance_otherTableAdapter.Fill(this.proyectos_Avance_Others.Proyectos_Avance_other);
             // TODO: esta línea de código carga datos en la tabla 'proyectos_Avance_INOX._Proyectos_Avance_INOX' Puede moverla o quitarla según sea necesario.
@@ -69,9 +84,205 @@ AtencionClientes
             this.proyectos_Avance_ArchivosTableAdapter.Fill(this.proyectosArchivos.Proyectos_Avance_Archivos);
             // TODO: esta línea de código carga datos en la tabla 'proyectos_Avance._Proyectos_Avance' Puede moverla o quitarla según sea necesario.
             this.proyectos_AvanceTableAdapter.Fill(this.proyectos_Avance._Proyectos_Avance);
-            proyectos_AvanceTableAdapter.LimpiadorPorcentajes();
-            iniciador();
+            DateTime dt = DateTime.Now;
+            s = dt.ToString("yyyy-MM-dd");
+            dat = "Radiografia" + s;
+           // proyectos_AvanceTableAdapter.LimpiadorPorcentajes();
+            //iniciador();
+            this.rADIOGRAFIATableAdapter.Fill(this.radiografia.RADIOGRAFIA);
+            this.Activated += AfterLoading;
+
         }
+        private void AfterLoading(object sender, EventArgs e)
+        {
+            this.Activated -= AfterLoading;
+            //Write your code here.
+            exporta();
+            Departamentos();
+           // envia();
+            Application.Exit();
+        }
+
+        public void exporta()
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application aplicacion;
+                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
+                aplicacion = new Microsoft.Office.Interop.Excel.Application();
+                libros_trabajo = aplicacion.Workbooks.Add(Type.Missing);
+                hoja_trabajo = null;
+                hoja_trabajo = libros_trabajo.Sheets["Hoja1"];
+                hoja_trabajo = libros_trabajo.ActiveSheet;
+
+                for (int i = 1; i < DG_Proyectos.Columns.Count + 1; i++)
+                {
+                    hoja_trabajo.Cells[1, i] = DG_Proyectos.Columns[i - 1].HeaderText;
+
+                }
+                // storing Each row and column value to excel sheet  
+                for (int i = 0; i < DG_Proyectos.Rows.Count - 1; i++)
+                {
+
+                    for (int j = 0; j < DG_Proyectos.Columns.Count; j++)
+                    {
+                        hoja_trabajo.Cells[i + 2, j + 1].NumberFormat = "@";
+                        hoja_trabajo.Cells[i + 2, j + 1] = DG_Proyectos.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                //-////////////////////////////////////////////////////////////////////////
+                libros_trabajo.SaveAs("C:\\Radiografias\\" + dat);
+                libros_trabajo.Close(true);
+                aplicacion.Quit();
+                //     MessageBox.Show("Exportado");
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.ToString());
+            }
+            Application.Exit();
+        }
+        private AlternateView getEmbeddedlmagen1(String filePath)
+        {
+            // below line was corrected to include the mediatype so it displays in all 
+            // mail clients. previous solution only displays in Gmail the inline images 
+            LinkedResource res = new LinkedResource(filePath, MediaTypeNames.Image.Jpeg);
+            res.ContentId = Guid.NewGuid().ToString();
+            String Body = "<DIV><H5>Se ha generado correctamente el reporte Semanal de la radiografia de proyectos </HEAD></DIV></H>";
+            Body += "<DIV>Correspondiente al mes de: " + s + "</DIV>";
+
+
+
+
+            string htmlBody = "" + Body + "" + @"<img src='cid:" + res.ContentId + @"'/> ";
+            AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody,
+             null, MediaTypeNames.Text.Html);
+            alternateView.LinkedResources.Add(res);
+            return alternateView;
+        }
+        public void Departamentos() {
+            SqlConnection conexion = new SqlConnection(ObtenerCadena());
+            conexion.Open();
+            ////////////////////////////////////SE EJECUTA EL COMANDO HACIA LA VISTA Y SE HACE LA VALIDACION//////////////////////////////////////
+            SqlCommand cmd = new SqlCommand(
+                                            "select COUNT([ID])  from [Login_Departamentos]" 
+                                         
+
+                                           
+
+                                            , conexion);
+
+
+
+
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.SelectCommand.CommandTimeout = 36000;
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            conexion.Dispose();
+
+
+            if (dt.Rows.Count > 0)
+            {
+                TotalUsuarios = dt.Rows[0][0].ToString();
+                ContadorUsuarios();
+            }
+            else { }
+
+           
+            }
+
+        public void ContadorUsuarios()
+        {
+
+
+
+            Totalusuario = Int32.Parse(TotalUsuarios);
+
+            contadorusuarios = 0;
+          
+            for (k1 = 1; k1 <= Totalusuario; k1++)
+            {
+                contadorusuarios = contadorusuarios + 1;
+                envia();
+            }
+        }
+
+
+                public void envia()
+        {
+
+            try
+            {
+                ////////////////////////////////////SE ABRE LA CONEXION/////////////////////////////////////////////////////////////////////////////////
+                SqlConnection conexion = new SqlConnection(ObtenerCadena());
+                conexion.Open();
+                ////////////////////////////////////SE EJECUTA EL COMANDO HACIA LA VISTA Y SE HACE LA VALIDACION//////////////////////////////////////
+                SqlCommand cmd = new SqlCommand(
+                                                "select top ("+contadorusuarios+")"+ "Email from Login_Departamentos"
+
+                                                , conexion);
+
+
+
+
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.SelectCommand.CommandTimeout = 36000;
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                conexion.Dispose();
+
+
+                if (dt.Rows.Count > 0)
+                {
+                    Email_1 = dt.Rows[contadorusuarios-1][0].ToString();
+                    string _sender = "support@cbr-ingenieria.com.mx";
+                    string _password = "Cbrsoporte2020.";
+                    SmtpClient client = new SmtpClient("smtp.office365.com");
+                    client.Port = 587;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    System.Net.NetworkCredential credentials =
+                     new System.Net.NetworkCredential(_sender, _password);
+                    client.EnableSsl = true;
+                    client.Credentials = credentials;
+                    if (Email_1 == "") { Email_1 = "Support@cbr-ingenieria.com.mx"; } else { };
+                    MailMessage message = new MailMessage(_sender, Email_1);
+                    message.Subject = "Servicio de Radiografia de Proyectos Semanal";
+                    message.IsBodyHtml = true;
+                    message.AlternateViews.Add(getEmbeddedlmagen1("C:/Program Files/Default Company Name/Cbr App/logo_cbr.png"));
+
+                    message.Attachments.Add(new Attachment("C:\\Radiografias\\" + dat + ".xlsx"));
+                  
+                    client.Send(message);
+                }
+
+           
+
+
+                ////////////////////////////////////SI EL USUARIO, CONTRASENA O PLANTA ESTA MAL//////////////////////////////////////////////////////////////////////////
+                else
+                {
+                    MessageBox.Show("Sin resultado");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+
+            }
+        }
+
 
         public static string ObtenerCadena()
         {

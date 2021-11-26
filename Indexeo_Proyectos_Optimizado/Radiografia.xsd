@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Radiografia" targetNamespace="http://tempuri.org/Radiografia.xsd" xmlns:mstns="http://tempuri.org/Radiografia.xsd" xmlns="http://tempuri.org/Radiografia.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CBR_IngenieriaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CBR_IngenieriaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Indexeo_Proyectos_Optimizado.Properties.Settings.GlobalReference.Default.CBR_IngenieriaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RADIOGRAFIATableAdapter" GeneratorDataComponentClassName="RADIOGRAFIATableAdapter" Name="RADIOGRAFIA" UserDataComponentName="RADIOGRAFIATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CBR_IngenieriaConnectionString (Settings)" DbObjectName="CBR_Ingenieria.dbo.RADIOGRAFIA" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Proyecto, [Atencion a cliente], [Entrega Documentos], Postventa, Encuesta, [Cierre Proyecto], Compras, [Dosier de Calidad], [Alta y Documentos Cliente], [Pedido Interno], [Expediente Comercial], [Expediente Tecnico], Planos, [Fabricacion y Equipamiento], [Instalacion y Arranque], [Operacion y Mantenimiento], [Obra civil], [Lista de Material y Equipamiento], [Instalacion Preparativo], PorcentajeFinal FROM dbo.RADIOGRAFIA</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Proyecto" DataSetColumn="Proyecto" />
+              <Mapping SourceColumn="Atencion a cliente" DataSetColumn="Atencion a cliente" />
+              <Mapping SourceColumn="Entrega Documentos" DataSetColumn="Entrega Documentos" />
+              <Mapping SourceColumn="Postventa" DataSetColumn="Postventa" />
+              <Mapping SourceColumn="Encuesta" DataSetColumn="Encuesta" />
+              <Mapping SourceColumn="Cierre Proyecto" DataSetColumn="Cierre Proyecto" />
+              <Mapping SourceColumn="Compras" DataSetColumn="Compras" />
+              <Mapping SourceColumn="Dosier de Calidad" DataSetColumn="Dosier de Calidad" />
+              <Mapping SourceColumn="Alta y Documentos Cliente" DataSetColumn="Alta y Documentos Cliente" />
+              <Mapping SourceColumn="Pedido Interno" DataSetColumn="Pedido Interno" />
+              <Mapping SourceColumn="Expediente Comercial" DataSetColumn="Expediente Comercial" />
+              <Mapping SourceColumn="Expediente Tecnico" DataSetColumn="Expediente Tecnico" />
+              <Mapping SourceColumn="Planos" DataSetColumn="Planos" />
+              <Mapping SourceColumn="Fabricacion y Equipamiento" DataSetColumn="Fabricacion y Equipamiento" />
+              <Mapping SourceColumn="Instalacion y Arranque" DataSetColumn="Instalacion y Arranque" />
+              <Mapping SourceColumn="Operacion y Mantenimiento" DataSetColumn="Operacion y Mantenimiento" />
+              <Mapping SourceColumn="Obra civil" DataSetColumn="Obra civil" />
+              <Mapping SourceColumn="Lista de Material y Equipamiento" DataSetColumn="Lista de Material y Equipamiento" />
+              <Mapping SourceColumn="Instalacion Preparativo" DataSetColumn="Instalacion Preparativo" />
+              <Mapping SourceColumn="PorcentajeFinal" DataSetColumn="PorcentajeFinal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Radiografia" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Radiografia" msprop:Generator_UserDSName="Radiografia">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RADIOGRAFIA" msprop:Generator_TableClassName="RADIOGRAFIADataTable" msprop:Generator_TableVarName="tableRADIOGRAFIA" msprop:Generator_TablePropName="RADIOGRAFIA" msprop:Generator_RowDeletingName="RADIOGRAFIARowDeleting" msprop:Generator_RowChangingName="RADIOGRAFIARowChanging" msprop:Generator_RowEvHandlerName="RADIOGRAFIARowChangeEventHandler" msprop:Generator_RowDeletedName="RADIOGRAFIARowDeleted" msprop:Generator_UserTableName="RADIOGRAFIA" msprop:Generator_RowChangedName="RADIOGRAFIARowChanged" msprop:Generator_RowEvArgName="RADIOGRAFIARowChangeEvent" msprop:Generator_RowClassName="RADIOGRAFIARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Proyecto" msprop:Generator_ColumnVarNameInTable="columnProyecto" msprop:Generator_ColumnPropNameInRow="Proyecto" msprop:Generator_ColumnPropNameInTable="ProyectoColumn" msprop:Generator_UserColumnName="Proyecto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Atencion_x0020_a_x0020_cliente" msprop:Generator_ColumnVarNameInTable="columnAtencion_a_cliente" msprop:Generator_ColumnPropNameInRow="Atencion_a_cliente" msprop:Generator_ColumnPropNameInTable="Atencion_a_clienteColumn" msprop:Generator_UserColumnName="Atencion a cliente" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Entrega_x0020_Documentos" msprop:Generator_ColumnVarNameInTable="columnEntrega_Documentos" msprop:Generator_ColumnPropNameInRow="Entrega_Documentos" msprop:Generator_ColumnPropNameInTable="Entrega_DocumentosColumn" msprop:Generator_UserColumnName="Entrega Documentos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Postventa" msprop:Generator_ColumnVarNameInTable="columnPostventa" msprop:Generator_ColumnPropNameInRow="Postventa" msprop:Generator_ColumnPropNameInTable="PostventaColumn" msprop:Generator_UserColumnName="Postventa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Encuesta" msprop:Generator_ColumnVarNameInTable="columnEncuesta" msprop:Generator_ColumnPropNameInRow="Encuesta" msprop:Generator_ColumnPropNameInTable="EncuestaColumn" msprop:Generator_UserColumnName="Encuesta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cierre_x0020_Proyecto" msprop:Generator_ColumnVarNameInTable="columnCierre_Proyecto" msprop:Generator_ColumnPropNameInRow="Cierre_Proyecto" msprop:Generator_ColumnPropNameInTable="Cierre_ProyectoColumn" msprop:Generator_UserColumnName="Cierre Proyecto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Compras" msprop:Generator_ColumnVarNameInTable="columnCompras" msprop:Generator_ColumnPropNameInRow="Compras" msprop:Generator_ColumnPropNameInTable="ComprasColumn" msprop:Generator_UserColumnName="Compras" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dosier_x0020_de_x0020_Calidad" msprop:Generator_ColumnVarNameInTable="columnDosier_de_Calidad" msprop:Generator_ColumnPropNameInRow="Dosier_de_Calidad" msprop:Generator_ColumnPropNameInTable="Dosier_de_CalidadColumn" msprop:Generator_UserColumnName="Dosier de Calidad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Alta_x0020_y_x0020_Documentos_x0020_Cliente" msprop:Generator_ColumnVarNameInTable="columnAlta_y_Documentos_Cliente" msprop:Generator_ColumnPropNameInRow="Alta_y_Documentos_Cliente" msprop:Generator_ColumnPropNameInTable="Alta_y_Documentos_ClienteColumn" msprop:Generator_UserColumnName="Alta y Documentos Cliente" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Pedido_x0020_Interno" msprop:Generator_ColumnVarNameInTable="columnPedido_Interno" msprop:Generator_ColumnPropNameInRow="Pedido_Interno" msprop:Generator_ColumnPropNameInTable="Pedido_InternoColumn" msprop:Generator_UserColumnName="Pedido Interno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expediente_x0020_Comercial" msprop:Generator_ColumnVarNameInTable="columnExpediente_Comercial" msprop:Generator_ColumnPropNameInRow="Expediente_Comercial" msprop:Generator_ColumnPropNameInTable="Expediente_ComercialColumn" msprop:Generator_UserColumnName="Expediente Comercial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expediente_x0020_Tecnico" msprop:Generator_ColumnVarNameInTable="columnExpediente_Tecnico" msprop:Generator_ColumnPropNameInRow="Expediente_Tecnico" msprop:Generator_ColumnPropNameInTable="Expediente_TecnicoColumn" msprop:Generator_UserColumnName="Expediente Tecnico" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Planos" msprop:Generator_ColumnVarNameInTable="columnPlanos" msprop:Generator_ColumnPropNameInRow="Planos" msprop:Generator_ColumnPropNameInTable="PlanosColumn" msprop:Generator_UserColumnName="Planos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fabricacion_x0020_y_x0020_Equipamiento" msprop:Generator_ColumnVarNameInTable="columnFabricacion_y_Equipamiento" msprop:Generator_ColumnPropNameInRow="Fabricacion_y_Equipamiento" msprop:Generator_ColumnPropNameInTable="Fabricacion_y_EquipamientoColumn" msprop:Generator_UserColumnName="Fabricacion y Equipamiento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Instalacion_x0020_y_x0020_Arranque" msprop:Generator_ColumnVarNameInTable="columnInstalacion_y_Arranque" msprop:Generator_ColumnPropNameInRow="Instalacion_y_Arranque" msprop:Generator_ColumnPropNameInTable="Instalacion_y_ArranqueColumn" msprop:Generator_UserColumnName="Instalacion y Arranque" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Operacion_x0020_y_x0020_Mantenimiento" msprop:Generator_ColumnVarNameInTable="columnOperacion_y_Mantenimiento" msprop:Generator_ColumnPropNameInRow="Operacion_y_Mantenimiento" msprop:Generator_ColumnPropNameInTable="Operacion_y_MantenimientoColumn" msprop:Generator_UserColumnName="Operacion y Mantenimiento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Obra_x0020_civil" msprop:Generator_ColumnVarNameInTable="columnObra_civil" msprop:Generator_ColumnPropNameInRow="Obra_civil" msprop:Generator_ColumnPropNameInTable="Obra_civilColumn" msprop:Generator_UserColumnName="Obra civil" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lista_x0020_de_x0020_Material_x0020_y_x0020_Equipamiento" msprop:Generator_ColumnVarNameInTable="columnLista_de_Material_y_Equipamiento" msprop:Generator_ColumnPropNameInRow="Lista_de_Material_y_Equipamiento" msprop:Generator_ColumnPropNameInTable="Lista_de_Material_y_EquipamientoColumn" msprop:Generator_UserColumnName="Lista de Material y Equipamiento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Instalacion_x0020_Preparativo" msprop:Generator_ColumnVarNameInTable="columnInstalacion_Preparativo" msprop:Generator_ColumnPropNameInRow="Instalacion_Preparativo" msprop:Generator_ColumnPropNameInTable="Instalacion_PreparativoColumn" msprop:Generator_UserColumnName="Instalacion Preparativo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PorcentajeFinal" msprop:Generator_ColumnVarNameInTable="columnPorcentajeFinal" msprop:Generator_ColumnPropNameInRow="PorcentajeFinal" msprop:Generator_ColumnPropNameInTable="PorcentajeFinalColumn" msprop:Generator_UserColumnName="PorcentajeFinal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
